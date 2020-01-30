@@ -9,7 +9,9 @@ exports.seed = function(knex) {
         { id: 1, username: 'az', first_name: 'a', last_name: 'z', password: 'tester'},
         { id: 2, username: 'by', first_name: 'b', last_name: 'y', password: 'tester'},
         { id: 3, username: 'cx', first_name: 'c', last_name: 'x', password: 'tester'},
-        { id: 4, username: 'dw', first_name: 'd', last_name: 'w', password: 'tester'}
+        { id: 4, username: 'dw', first_name: 'd', last_name: 'w', password: 'tester'},
+        { id: 5, username: 'ev', first_name: 'd', last_name: 'w', password: 'tester'},
+        { id: 6, username: 'yb', first_name: 'yersina', last_name: 'baker', password: '$2a$10$S5NyWlLGnrpxi.DzsihYn.UkqYVXezRNKBv9auX/O6bYNOJrp3Di6'}
       ])
     })
 
