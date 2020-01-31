@@ -1,7 +1,7 @@
 const db = require('../data/db.js');
 
 function getStaff() {
-    return db('staff').select('id', 'username', 'first_name', 'last_name', 'password');
+    return db('staff').select('id', 'username', 'first_name', 'last_name');
 }
 
 function getStaffById(id) {

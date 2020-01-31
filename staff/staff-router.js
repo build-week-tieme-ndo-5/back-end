@@ -78,7 +78,7 @@ router.post('/register', (req, res) => {
 })
 
 
-// Log in existing staff members
+// Log in existing staff membersand assign JWT
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
     if(!username || !password){
