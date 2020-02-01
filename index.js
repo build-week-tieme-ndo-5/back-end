@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express')
+const cors = require('cors')
 
 const verifyJwt = require('./auth/verifyJwt.js')
 
@@ -7,7 +8,7 @@ const staffRouter = require('./staff/staff-router.js')
 const clientsRouter = require('./clients/clients-router.js')
 
 const server = express();
-
+server.use(cors());
 server.use(express.json());
 
 server.use('/staff', staffRouter);
