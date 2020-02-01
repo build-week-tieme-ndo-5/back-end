@@ -54,6 +54,10 @@ router.post('/register', (req, res) => {
         .then(id => {
             res.status(201).json({ message: `Client ${name} created`, id})
         })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: `There was the following error ${err}`})
+        })
     }
 })
 
