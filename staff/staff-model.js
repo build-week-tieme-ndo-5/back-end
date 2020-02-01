@@ -21,11 +21,16 @@ function remove(id) {
     return db('staff').where({ id }).del();
 }
 
+function update(id, changes){
+    return db('staff').where({ id }).update(changes)
+}
+
 
 module.exports = {
     getStaff,
     getStaffById,
     getStaffByUsername,
     insert,
-    remove
+    remove,
+    update
 }
