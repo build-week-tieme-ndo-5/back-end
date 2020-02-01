@@ -38,7 +38,7 @@ router.get('/member/:id', verifyJwt, (req, res) => {
 
 }) 
 
-// Get staff member by username - probably shouldn't be used by frontend since this is needed return passwords
+// Get staff member by username
 router.get('/member', (req, res) => {
     const { username } = req.body;
     Staff.getStaffByUsername(username)
@@ -149,6 +149,8 @@ router.put('/update/:id/', (req, res) => {
             res.status(500).json({error: "The staff member's infomation could not be modified."});
         })
 })
+
+
 
 
 
