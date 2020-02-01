@@ -86,6 +86,29 @@ router.put('/:id/update', (req, res) => {
     
 })
 
+router.delete('/remove/:id', (req, res) => {
+    const { id } = req.params;
+    Client.getClientById(id)
+        .then(client => {
+            if(client) {
+                Client.remove(id)
+                    .then(() => {
+                        res.status(200).json({ message: `Client ${id} deleted`})
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        res.status(500).json({ message: 'There was an error deleting the client'})
+                    })
+            } else {
+                res.status(404).json({ message: `A client with an id of ${id} does not exist`})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: `There was an error deleting the client member with id ${id}`})
+        })
+})
+
 
 
 
