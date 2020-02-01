@@ -103,6 +103,28 @@ router.post('/login', (req, res) => {
     }
 })
 
+router.delete('/remove/:id', (req, res) => {
+    const { id } = req.params;
+    Staff.getStaffById(id)
+        .then(member => {
+            if(member) {
+                Staff.remove(id)
+                    .then(() => {
+                        res.status(200).json({ message: `Staff member ${id} deleted`})
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        res.status(500).json({ message: 'There was an error deleting that staff member'})
+                    })
+            } else {
+                res.status(404).json({ message: `A staff member with an id of ${id} does not exist`})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: `There was an error deleting the staff member with id ${id}`})
+        })
+})
 
 
 

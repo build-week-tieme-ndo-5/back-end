@@ -17,10 +17,15 @@ function insert(user){
     return db('staff').insert(user, 'id').then(([id]) => id)
 }
 
+function remove(id) {
+    return db('staff').where({ id }).del();
+}
+
 
 module.exports = {
     getStaff,
     getStaffById,
     getStaffByUsername,
-    insert
+    insert,
+    remove
 }
