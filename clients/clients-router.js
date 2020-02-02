@@ -63,6 +63,7 @@ router.post('/register', (req, res) => {
     }
 })
 
+// Update client
 router.put('/:id/update', (req, res) => {
     const { id } = req.params;
     const data = req.body;
