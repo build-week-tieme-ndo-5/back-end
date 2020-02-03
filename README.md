@@ -1,4 +1,4 @@
-# back-end
+# Tieme Ndo - Back-end
 
 ## Staff member table schema
 
@@ -41,10 +41,10 @@ sales_goal    | integer      | optional
 - Example:
  ```js
 {
-    "username": "pt",
-    "first_name": "pat",
-    "last_name": "thompson",
-    "password": "tester"
+    "username": "pt",        // required
+    "first_name": "pat",     // required
+    "last_name": "thompson", // required
+    "password": "tester"     // required
 }
 ```
 ----------------------
@@ -60,8 +60,8 @@ sales_goal    | integer      | optional
 - Example:
 ```js
 {
-    "username": "yb",
-    "password": "tester"
+    "username": "yb",    // required
+    "password": "tester" // required
 }
 ```
 ----------------------
@@ -101,7 +101,7 @@ sales_goal    | integer      | optional
     - Updated staff member record
 - Notes:
     - "username", "first_name", and/or "last_name" can be updated
-    - it is only necessary to submit the information that needs to be updated
+    - It is only necessary to submit the information to update. Other field may be omitted
 
 - Example:
 ```js
@@ -140,11 +140,11 @@ sales_goal    | integer      | optional
 - Example:
 ```js
 {
-    "name": "arthur",
-	"village": "arthurville",
-	"loan_amount": 10.5,
-	"loan_start": "2019-12-01",
-	"loan_due": "2021-12-01",
+    "name": "arthur",              // required
+	"village": "arthurville",      // required
+	"loan_amount": 10.5,           // required
+	"loan_start": "2019-12-01",    // required
+	"loan_due": "2021-12-01",      // required
     "last_payment": 2.3,           // optional, defaults to null
     "payment_date": "2020-01-01",  // optional, defaults to null
     "harvest_yield": 7,            // optional, defaults to null
@@ -159,7 +159,7 @@ sales_goal    | integer      | optional
 - Token: Required
 - Returns:
     - Updated client info
-    - it is only necessary to submit the information that needs to be updated
+    - It is only necessary to submit the information to update. Other field may be omitted.
 
 - Example:
 ```js
@@ -189,7 +189,7 @@ sales_goal    | integer      | optional
 - Example:
 ```js
 {
-    "last_payment": 12,
-    "payment_date": "2020-01-01"
+    "last_payment": 12,            // required
+    "payment_date": "2020-01-01"   // required
 }
 ```
