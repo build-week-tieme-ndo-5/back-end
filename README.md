@@ -141,10 +141,10 @@ sales_goal    | integer      | optional
 ```js
 {
     "name": "arthur",              // required
-	"village": "arthurville",      // required
-	"loan_amount": 10.5,           // required
-	"loan_start": "2019-12-01",    // required
-	"loan_due": "2021-12-01",      // required
+    "village": "arthurville",      // required
+    "loan_amount": 10.5,           // required
+    "loan_start": "2019-12-01",    // required
+    "loan_due": "2021-12-01",      // required
     "last_payment": 2.3,           // optional, defaults to null
     "payment_date": "2020-01-01",  // optional, defaults to null
     "harvest_yield": 7,            // optional, defaults to null
