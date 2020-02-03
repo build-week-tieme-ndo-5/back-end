@@ -49,7 +49,9 @@ router.post('/register', (req, res) => {
             loan_start,
             loan_due,
             last_payment,
-            payment_date
+            payment_date,
+            harvest_yield,
+            sales_goal
         })
         .then(id => {
             res.status(201).json({ message: `Client ${name} created`, id})
@@ -61,6 +63,7 @@ router.post('/register', (req, res) => {
     }
 })
 
+// Update client
 router.put('/:id/update', (req, res) => {
     const { id } = req.params;
     const data = req.body;
@@ -85,6 +88,63 @@ router.put('/:id/update', (req, res) => {
         })
     
 })
+
+
+// Record payment and adjust loan amount
+router.put('/:id/update/payment', (req, res) => {
+    const { id } = req.params;
+    const { last_payment, payment_date } = req.body;
+    Client.getClientById(id)
+        .then(client => {
+            if(client) {
+                const newLoanAmount = client.loan_amount - last_payment
+                Client.update(id, { loan_amount: newLoanAmount, payment_date })
+                 .then(updated => {
+                     if(updated){
+                         Client.getClientById(id)
+                            .then(patron => {
+                                res.status(200).json(patron)
+                            })
+                     }
+                 })
+                 .catch(err => {
+                     console.log(err)
+                     res.status(500).json({ message: 'There was an error updating the loan'})
+                 })
+            } else {
+                res.status(404).json({error: `Client with the id ${id} does not exist`})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: "The client's infomation could not be modified."});
+        })
+})
+
+router.delete('/remove/:id', (req, res) => {
+    const { id } = req.params;
+    Client.getClientById(id)
+        .then(client => {
+            if(client) {
+                Client.remove(id)
+                    .then(() => {
+                        res.status(200).json({ message: `Client ${id} deleted`})
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        res.status(500).json({ message: 'There was an error deleting the client'})
+                    })
+            } else {
+                res.status(404).json({ message: `A client with an id of ${id} does not exist`})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({ message: `There was an error deleting the client member with id ${id}`})
+        })
+})
+
+
 
 
 
