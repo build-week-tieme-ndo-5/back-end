@@ -1,5 +1,6 @@
 # back-end
-Staff member table schema
+
+## Staff member table schema
 
 field      | data type    | metadata
 ---------- | ------------ | ----------------------------------------------------
@@ -10,7 +11,7 @@ last_name  | string       | required
 password   | string       | required
 
 
-Client table schema
+## Client table schema
 
 field         | data type    | metadata
 ------------- | ------------ | ----------------------------------------------------
@@ -27,159 +28,168 @@ sales_goal    | integer      | optional
 
 ----------------------
 
-Register a new staff member
-Type: Post
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/register
-Token: Not required
-Returns: 
+## Endpoints
+
+### Register a new staff member
+- Type: Post
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/register
+- Token: Not required
+- Returns: 
     - Success message
     - id
 
-Example:
+- Example:
+ ```js
 {
     "username": "pt",
     "first_name": "pat",
     "last_name": "thompson",
     "password": "tester"
 }
-
+```
 ----------------------
 
-Log in an existing staff member
-Type: Post
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/login
-Token: Not required
-Returns:
+### Log in an existing staff member
+- Type: Post
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/login
+- Token: Not required
+- Returns:
     - Welcome message
     - JSON web token
 
-Example:
+- Example:
+```js
 {
     "username": "yb",
     "password": "tester"
 }
-
+```
 ----------------------
 
-Get a list of existing staff
-Type: Get
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/
-Token: Required
-Returns:
+### Get a list of existing staff
+- Type: Get
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/
+- Token: Required
+- Returns:
     - List of staff members
 
 ----------------------
 
-Get staff member by id
-Type: Get
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/member/:id
-Token: Required
-Returns:
+### Get staff member by id
+- Type: Get
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/member/:id
+- Token: Required
+- Returns:
     - Staff member
 
 ----------------------
 
-Delete staff member
-Type: Delete
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/remove/:id
-Token: Required
-Returns:
+### Delete staff member
+- Type: Delete
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/remove/:id
+- Token: Required
+- Returns:
     - Success message
 
 ----------------------
 
-Update a staff member's information
-Type: Put
-Endpoint: https://tieme-ndo-5.herokuapp.com/staff/update/:id
-Token: Required
-Returns:
+### Update a staff member's information
+- Type: Put
+- Endpoint: https://tieme-ndo-5.herokuapp.com/staff/update/:id
+- Token: Required
+- Returns:
     - Updated staff member record
-Notes:
+- Notes:
     - "username", "first_name", and/or "last_name" can be updated
     - it is only necessary to submit the information that needs to be updated
 
-Example:
+- Example:
+```js
 {
     "first_name": "Clarence"
 }
-
+```
 ----------------------
 
-Get a list of clients
-Type: Get
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients
-Token: Required
-Returns:
+### Get a list of clients
+- Type: Get
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients
+- Token: Required
+- Returns:
     - List of existing clients
 
 ----------------------
 
-Get client by id
-Type: Get
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients/:id
-Token: Required
-Returns:
+### Get client by id
+- Type: Get
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients/:id
+- Token: Required
+- Returns:
     - Client info
 
 ----------------------
 
-Register a new client
-Type: Post
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients/register
-Token: Required
-Returns:
+### Register a new client
+- Type: Post
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients/register
+- Token: Required
+- Returns:
     - Success message
     - id
 
-Example:
+- Example:
+```js
 {
     "name": "arthur",
 	"village": "arthurville",
 	"loan_amount": 10.5,
 	"loan_start": "2019-12-01",
 	"loan_due": "2021-12-01",
-    "last_payment: 2.3,            **optional, defaults to null**
-    "payment_date": "2020-01-01",  **optional, defaults to null**
-    "harvest_yield": 7,            **optional, defaults to null**
-    "sales_goal": 6                **optional, defaults to null**
+    "last_payment": 2.3,           // optional, defaults to null
+    "payment_date": "2020-01-01",  // optional, defaults to null
+    "harvest_yield": 7,            // optional, defaults to null
+    "sales_goal": 6                // optional, defaults to null
 }
-
+```
 ----------------------
 
-Update existing client information
-Type: Put
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients/8/update
-Token: Required
-Returns:
+### Update existing client information
+- Type: Put
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients/8/update
+- Token: Required
+- Returns:
     - Updated client info
     - it is only necessary to submit the information that needs to be updated
 
-Example:
+- Example:
+```js
 {
     "name": "pat",
     "sales_goal": 4
 }
-
+```
 ----------------------
 
-Delete client
-Type: Delete
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients/remove/:id
-Token: Required
-Returns:
+### Delete client
+- Type: Delete
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients/remove/:id
+- Token: Required
+- Returns:
     - Success message
 
 ----------------------
 
-Update loan amount and payment
+### Update loan amount and payment
 ** This endpoint updates the "last_payment" and "payment_date" and adjusts the "loan_amount" field**
-Type: Put
-Endpoint: https://tieme-ndo-5.herokuapp.com/clients/:id/update/payment
-Returns:
+- Type: Put
+- Endpoint: https://tieme-ndo-5.herokuapp.com/clients/:id/update/payment
+- Returns:
     - Updated client information
 
-Example:
+- Example:
+```js
 {
     "last_payment": 12,
     "payment_date": "2020-01-01"
 }
+```
