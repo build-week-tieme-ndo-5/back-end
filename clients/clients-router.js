@@ -98,7 +98,7 @@ router.put('/:id/update/payment', (req, res) => {
         .then(client => {
             if(client) {
                 const newLoanAmount = client.loan_amount - last_payment
-                Client.update(id, { loan_amount: newLoanAmount, payment_date })
+                Client.update(id, { loan_amount: newLoanAmount, last_payment, payment_date })
                  .then(updated => {
                      if(updated){
                          Client.getClientById(id)
